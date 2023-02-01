@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { FeedbackButton, Wrapper } from './FeedbackOptions.styled';
+import { FeedbackButton, Wrapper } from './Feedback.styled';
 
 export default function FeedbackOptions({ options, onLeaveFeedback }) {
   const [typeGood, typeNeutral, typeBad] = options;
