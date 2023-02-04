@@ -13,9 +13,9 @@ export default function Statistics({
       <FeedbackListItem>Good: {good}</FeedbackListItem>
       <FeedbackListItem>Neutral: {neutral}</FeedbackListItem>
       <FeedbackListItem>Bad: {bad}</FeedbackListItem>
-      <FeedbackListItem>Total: {total()}</FeedbackListItem>
+      <FeedbackListItem>Total: {total}</FeedbackListItem>
       <FeedbackListItem>
-        Positive feedback: {positivePercentage()}%
+        Positive feedback: {positivePercentage}%
       </FeedbackListItem>
     </FeedbackList>
   );
@@ -25,6 +25,6 @@ Statistics.propTypes = {
   good: PropTypes.number.isRequired,
   neutral: PropTypes.number.isRequired,
   bad: PropTypes.number.isRequired,
-  total: PropTypes.func.isRequired,
-  positivePercentage: PropTypes.func.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
 };

@@ -5,19 +5,15 @@ import Section from './Section';
 import Notification from './Notification';
 
 export default class App extends Component {
-  static defaultProps = {
-    feedbackTypes: ['good', 'neutral', 'bad'],
-  };
-
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
   };
 
-  onLeaveFeedback = feedbackType => {
+  onLeaveFeedback = feedbackTypes => {
     this.setState(prevState => ({
-      [feedbackType]: prevState[feedbackType] + 1,
+      [feedbackTypes]: prevState[feedbackTypes] + 1,
     }));
   };
 
@@ -33,21 +29,21 @@ export default class App extends Component {
 
   render() {
     const { good, neutral, bad } = this.state;
-    const { feedbackTypes } = this.props;
     return (
-      <div style={{
-        height: '100vh',
-        display: 'flex-box',
-        padding: '100px',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-        
-      }}>
+      <div
+        style={{
+          height: '100vh',
+          display: 'flex-box',
+          padding: '100px',
+          justifyContent: 'center',
+          alignItems: 'center',
+          fontSize: 40,
+          color: '#010101',
+        }}
+      >
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={feedbackTypes}
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.onLeaveFeedback}
           ></FeedbackOptions>
         </Section>
@@ -57,11 +53,11 @@ export default class App extends Component {
               good={good}
               neutral={neutral}
               bad={bad}
-              total={this.countTotalFeedback}
-              positivePercentage={this.countPositiveFeedbackPercentage}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
             ></Statistics>
           ) : (
-            <Notification message="There is no feedbackt"></Notification>
+            <Notification message="There is no feedback"></Notification>
           )}
         </Section>
       </div>
